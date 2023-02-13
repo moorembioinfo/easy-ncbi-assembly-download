@@ -42,8 +42,8 @@ def get_assembly_summary():
     return(f'assembly_summary_genbank.txt')
 
 def find_matching_accessions(sfilename, assemblycol, afilename):
-     NCBI_df = pd.read_csv('sfilename', delimiter='\t', skiprows=1)
-     acc_df = pd.read_csv('afilename')
+     NCBI_df = pd.read_csv(sfilename, delimiter='\t', skiprows=1)
+     acc_df = pd.read_csv(afilename)
 
      accessionlist=list(acc_df[assemblycol])
      NCBI_matched = NCBI_df[NCBI_df[''].isin(accessionlist)]
