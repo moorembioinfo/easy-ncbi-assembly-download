@@ -53,8 +53,8 @@ if __name__ == "__main__":
     args = add_args(sys.argv[1:])
 
     sfilename = ''
-    if args.NCBIsummary:
-        sfilename=args.NCBIsummary
+    if args.NCBI:
+        sfilename=args.NCBI
     else:
         sfilename = get_assembly_summary()
 
