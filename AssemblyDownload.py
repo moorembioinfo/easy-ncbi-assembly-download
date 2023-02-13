@@ -46,7 +46,11 @@ def find_matching_accessions(sfilename, assemblycol, afilename):
      acc_df = pd.read_csv(afilename)
 
      accessionlist=list(acc_df[assemblycol])
-     NCBI_matched = NCBI_df[NCBI_df[''].isin(accessionlist)]
+     NCBI_matched = NCBI_df[NCBI_df['biosample'].isin(accessionlist)]
+
+     for x in NCBI_matched['ftp_path']:
+         dcmd = f'wget {x} .'
+    print(dcmd)
 
 
 if __name__ == "__main__":
