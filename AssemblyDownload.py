@@ -27,7 +27,8 @@ def add_args(a):
         required=True,
     )
     parser.add_argument(
-        "--NCBIsummary",
+        "--NCBI",
+        "-n",
         help="Provide pre-downloaded NCBI assembly summary from https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/assembly_summary_genbank.txt",
     )
     args = parser.parse_args(a)
@@ -38,10 +39,10 @@ def get_assembly_summary():
     d = now.strftime("%b-%d-%Y")
     cmd = f'wget https://ftp.ncbi.nlm.nih.gov/genomes/ASSEMBLY_REPORTS/assembly_summary_genbank.txt'
     os.system(cmd)
-    return(f'assembly_summary_genbank_{d}.txt')
+    return(f'assembly_summary_genbank.txt')
 
 def find_matching_accessions(sfilename, assemblycol, afilename):
-     NCBI_df = pd.read_csv('sfilename', delimiter='\t', skip_rows=1)
+     NCBI_df = pd.read_csv('sfilename', delimiter='\t', skiprows=1)
      acc_df = pd.read_csv('afilename')
 
      accessionlist=list(acc_df[assemblycol])
