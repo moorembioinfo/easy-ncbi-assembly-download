@@ -50,7 +50,7 @@ def find_matching_accessions(sfilename, assemblycol, afilename):
 
      for x in NCBI_matched['ftp_path']:
          dcmd = f'wget {x} .'
-    print(dcmd)
+         print(dcmd)
 
 
 if __name__ == "__main__":
