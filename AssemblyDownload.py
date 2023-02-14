@@ -44,13 +44,16 @@ def get_assembly_summary():
 def find_matching_accessions(sfilename, assemblycol, afilename):
      NCBI_df = pd.read_csv(sfilename, delimiter='\t', skiprows=1)
      acc_df = pd.read_csv(afilename)
-
+     print(assemblycol)
+     print(acc_df.columns)
+     assemblycol = assemblycol.rstrip()
      accessionlist=list(acc_df[assemblycol])
      NCBI_matched = NCBI_df[NCBI_df['biosample'].isin(accessionlist)]
 
      for x in NCBI_matched['ftp_path']:
-         dcmd = f'wget {x} .'
-         print(dcmd)
+         g = x.split('/')[-1]
+         dcmd = f'wget {x}/{g}_genomic.fna.gz'
+         os.system(dcmd)
 
 
 if __name__ == "__main__":
