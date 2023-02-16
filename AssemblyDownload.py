@@ -50,10 +50,16 @@ def find_matching_accessions(sfilename, assemblycol, afilename):
      accessionlist=list(acc_df[assemblycol])
      NCBI_matched = NCBI_df[NCBI_df['biosample'].isin(accessionlist)]
 
+     outname = 'linkIDs.txt'
+     output = open(outname, "w")
+
      for x in NCBI_matched['ftp_path']:
          g = x.split('/')[-1]
          dcmd = f'wget {x}/{g}_genomic.fna.gz'
          os.system(dcmd)
+
+         biosample = list(NCBI_matched[NCBI_matched['fpt_path'] == x]['biosample'])[0]
+         output.write(f'{biosample},{g}\n')
 
 
 if __name__ == "__main__":
