@@ -58,7 +58,7 @@ def find_matching_accessions(sfilename, assemblycol, afilename):
          dcmd = f'wget {x}/{g}_genomic.fna.gz'
          os.system(dcmd)
 
-         biosample = list(NCBI_matched[NCBI_matched['fpt_path'] == x]['biosample'])[0]
+         biosample = list(NCBI_matched[NCBI_matched['ftp_path'] == x]['biosample'])[0]
          output.write(f'{biosample},{g}\n')
 
 
